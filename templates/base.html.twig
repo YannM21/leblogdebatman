@@ -8,6 +8,15 @@
     {# Affichage du titre de la page venant de la vue , suivi du nom du site collé a côté #}
     <title>{% block title %}{% endblock %}- Le blog de Batman</title>
 
+    {# Inclusiont font-awesome #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    {# Inclusion CSS bootstrap #}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+    {# Inclusion css perso #}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
     {# Bloc pour ajouter des fichiers CSS additionnels  #}
     {% block css %}{% endblock %}
 
@@ -19,6 +28,9 @@
 
     {# bloc pour afficher le contenu des pages #}
     {% block body %}{% endblock %}
+
+    {# Inclusion JS bootstrap #}
+    <script src=""{{ asset('js/bootstrap.bundle.min.js') }}></script>
 
     {# bloc pour ajouter des fichier js additionel #}
     {% block js %}{% endblock %}
