@@ -19,7 +19,7 @@ class MainController extends AbstractController
         return $this->render('main/home.html.twig');
 
         /**
-         * controller de la page mon profile
+         * contrôller de la page mon profile
          */
     }#[Route('/mon-profil/', name: 'main_profil')]
     #[IsGranted('ROLE_USER')]

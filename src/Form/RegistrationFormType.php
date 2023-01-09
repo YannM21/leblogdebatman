@@ -84,8 +84,8 @@ class RegistrationFormType extends AbstractType
             // Bouton de validation
             ->add('save', SubmitType::class, [
                 'label' => 'Créer mon compte',
-                'attr' => [
-                    'class' => 'btn btn-outline-primary w-100',
+                'attr' => [ 'class' => 'btn btn-outline-primary w-100',
+
                 ],
             ])
         ;
@@ -95,7 +95,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-           
+
         ]);
     }
 }
