@@ -52,7 +52,7 @@ class BlogController extends AbstractController
             // Message de succès
             $this->addFlash('success', 'Article publié avec succès !');
 
-            // TODO: pensez à faire une redirection sur la page d'affichage de l'article
+            return $this->redirectToRoute('main_home');
 
         }
 
