@@ -52,7 +52,9 @@ class BlogController extends AbstractController
             // Message de succès
             $this->addFlash('success', 'Article publié avec succès !');
 
-            return $this->redirectToRoute('main_home');
+            return $this->redirectToRoute('blog_publication_view', [
+                'slug' => $newArticle->getSlug(),
+            ]);
 
         }
 
@@ -74,10 +76,25 @@ class BlogController extends AbstractController
 
         $articles = $articleRepo->findAll();
 
-       
+
 
         return $this->render('blog/new_publication_list.html.twig', [
             'articles' => $articles,
+        ]);
+    }
+
+
+    /**
+     * Contrôleur de la page permettant de voir un article en détail
+     */
+
+    #[Route('/publication/{slug}/', name: 'publication_view')]
+    public function publicationView(Article $article): Response
+    {
+
+
+        return $this->render('blog/publication_view.html.twig', [
+            'article' =>$article,
         ]);
     }
 }
