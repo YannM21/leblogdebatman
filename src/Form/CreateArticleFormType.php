@@ -4,10 +4,9 @@ namespace App\Form;
 
 use App\Entity\Article;
 
-use Symfony\Component\DomCrawler\Field\TextareaFormField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -34,8 +33,12 @@ class CreateArticleFormType extends AbstractType
 
                 ],
             ])
-            ->add('content', TextareaType::class,[
+            ->add('content', CKEditorType::class,[
                 'label'=> 'content',
+                'attr' => [
+                    'class' => 'd-none'
+                ],
+                'purify_html' => true,
                 'constraints'=>[
                     new NotBlank([
                         'message'=> 'vous devez mettre un contenu'
@@ -47,9 +50,7 @@ class CreateArticleFormType extends AbstractType
                         'maxMessage'=> 'votre titre doit comptenir au maximum {{ limit }} caractères',
                     ]),
                 ],
-                'attr' =>[
-                    'rows'=> '8',
-                ],
+
             ])
             ->add('save', SubmitType::class, [ // Ajout d'un champ de type bouton de validation
                 'label' => 'Créer article',
