@@ -19,7 +19,34 @@
         {# Formulaire d'inscripton #}
         <div class="row">
             <div class="col-12 col-md-4 mx-auto">
-                {{ form(registrationForm) }}
+                {# Ouverture du formulaire #}
+                {{ form_start( registrationForm ) }}
+
+                {# Affichage des erreur générales du formulaire #}
+                {{ form_errors( registrationForm ) }}
+
+                {# Champ email #}
+                {{ form_row( registrationForm.email ) }}
+
+                {# Champ pseudo #}
+                {{ form_row( registrationForm.pseudonym ) }}
+
+
+                {# Champ mots de passe  #}
+                {{ form_row( registrationForm.plainPassword ) }}
+
+                {# Affichage du cpatcha #}
+                <div class="mb-3">
+                    <div class="mb-2">Captcha de sécurit</div>
+
+                    <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+                </div>
+
+                {# Bouton de validation #}
+                {{ form_row( registrationForm.save ) }}
+
+                {# Fermeture du formulaire  #}
+                {{ form_end( registrationForm ) }}
             </div>
 
 
@@ -28,6 +55,10 @@
 
     </div>
 
+{% endblock %}
+
+{% block js %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 
 
